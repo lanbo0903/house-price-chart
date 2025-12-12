@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据管理 - 二手房成交走势图</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 登录表单 -->
+        <div id="loginForm" class="login-form">
+            <h2>数据管理登录</h2>
+            <div class="form-group">
+                <label for="password">密码：</label>
+                <input type="password" id="password" placeholder="请输入管理员密码">
+            </div>
+            <button id="loginBtn" class="btn btn-primary">登录</button>
+            <p id="loginError" class="error-message"></p>
+        </div>
+
+        <!-- 管理界面 -->
+        <div id="adminContent" class="admin-content" style="display: none;">
+            <h2>数据管理</h2>
+            
+            <!-- 筛选区域 -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label for="adminCommunitySelect">小区：</label>
+                    <select id="adminCommunitySelect">
+                        <option value="">全部小区</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="adminHouseTypeSelect">户型：</label>
+                    <select id="adminHouseTypeSelect">
+                        <option value="">全部户型</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <button id="clearFiltersBtn" class="btn btn-secondary">清除筛选</button>
+                </div>
+            </div>
+
+            <!-- 数据操作区域 -->
+            <div class="data-operation-section">
+                <h3>添加/编辑记录</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="communityInput">小区名称：</label>
+                        <input type="text" id="communityInput" placeholder="请输入小区名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="houseTypeInput">户型：</label>
+                        <input type="text" id="houseTypeInput" placeholder="如：2室1厅">
+                    </div>
+                    <div class="form-group">
+                    <label for="dateInput">时间（年月日）：</label>
+                    <input type="date" id="dateInput">
+                </div>
+                    <div class="form-group">
+                        <label for="priceInput">价格（万元/㎡）：</label>
+                        <input type="number" id="priceInput" step="0.01" placeholder="如：3.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="areaInput">面积（㎡）：</label>
+                        <input type="number" id="areaInput" step="0.1" placeholder="如：80">
+                    </div>
+                </div>
+                <div class="operation-buttons">
+                    <button id="addRecordBtn" class="btn btn-primary">添加记录</button>
+                    <button id="editRecordBtn" class="btn btn-secondary" disabled>编辑记录</button>
+                    <button id="deleteRecordBtn" class="btn btn-danger" disabled>删除记录</button>
+                    <button id="clearFormBtn" class="btn btn-secondary">清空表单</button>
+                </div>
+            </div>
+
+            <!-- 批量导入区域 -->
+            <div class="batch-import-section">
+                <h3>批量导入</h3>
+                <div class="form-group">
+                    <label for="csvFile">选择CSV文件：</label>
+                    <input type="file" id="csvFile" accept=".csv">
+                    <p class="help-text">CSV格式：小区,户型,时间(YYYY-MM),价格(万元/㎡),面积(㎡)</p>
+                </div>
+                <button id="importBtn" class="btn btn-primary">导入数据</button>
+                <p id="importMessage"></p>
+            </div>
+
+            <!-- 数据列表区域 -->
+            <div class="data-list-section">
+                <h3>数据列表</h3>
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>小区</th>
+                            <th>户型</th>
+                            <th>时间</th>
+                            <th>价格（万元/㎡）</th>
+                            <th>面积（㎡）</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTableBody">
+                        <!-- 数据将通过JavaScript动态加载 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 网站设置区域 -->
+            <div class="site-settings-section">
+                <h3>网站设置</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="siteTitleInput">网站标题：</label>
+                        <input type="text" id="siteTitleInput" placeholder="请输入网站标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="siteDescriptionInput">网站描述：</label>
+                        <input type="text" id="siteDescriptionInput" placeholder="请输入网站描述">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPasswordInput">新密码：</label>
+                        <input type="password" id="newPasswordInput" placeholder="不修改请留空">
+                    </div>
+                </div>
+                <button id="saveSettingsBtn" class="btn btn-primary">保存设置</button>
+            </div>
+
+            <!-- GitHub配置区域 -->
+            <div class="github-config-section">
+                <h3>GitHub配置</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="githubUsername">GitHub用户名：</label>
+                        <input type="text" id="githubUsername" placeholder="如：username">
+                    </div>
+                    <div class="form-group">
+                        <label for="githubRepo">仓库名称：</label>
+                        <input type="text" id="githubRepo" placeholder="如：repo-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="githubToken">GitHub令牌：</label>
+                        <input type="password" id="githubToken" placeholder="Personal Access Token">
+                    </div>
+                </div>
+                <button id="saveGithubConfigBtn" class="btn btn-primary">保存GitHub配置</button>
+                <p id="githubConfigMessage"></p>
+            </div>
+
+            <!-- 返回首页按钮 -->
+            <div class="action-section">
+                <a href="index.html" class="btn btn-secondary">返回首页</a>
+            </div>
+
+            <!-- 免责声明 -->
+            <div class="disclaimer-section">
+                <p>此网站信息由个人采集，仅供个人研究学习使用，不保证准确，不对用户访问后对数据的使用负责！禁止非法转载和使用！</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

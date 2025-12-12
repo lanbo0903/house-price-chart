@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二手房成交走势图</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 网站标题 -->
+        <header class="header">
+            <h1 id="siteTitle">二手房成交走势图</h1>
+            <p id="siteDescription">展示各小区户型成交价格走势</p>
+        </header>
+
+        <!-- 筛选区域 -->
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="communitySelect">小区：</label>
+                <select id="communitySelect">
+                    <option value="">全部小区</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="houseTypeSelect">户型：</label>
+                <select id="houseTypeSelect">
+                    <option value="">全部户型</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="chartTypeSelect">图表类型：</label>
+                <select id="chartTypeSelect">
+                    <option value="line">折线图</option>
+                    <option value="bar">柱状图</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 图表展示区域 -->
+        <div class="chart-section">
+            <canvas id="priceChart"></canvas>
+        </div>
+
+        <!-- 统计概览区域 -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-label">平均价格</div>
+                <div class="stat-value" id="avgPrice">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">最高价格</div>
+                <div class="stat-value" id="maxPrice">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">最低价格</div>
+                <div class="stat-value" id="minPrice">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">价格涨幅</div>
+                <div class="stat-value" id="priceChange">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">平均面积</div>
+                <div class="stat-value" id="avgArea">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">成交量</div>
+                <div class="stat-value" id="totalCount">-</div>
+            </div>
+        </div>
+
+        <!-- 操作按钮区域 -->
+        <div class="action-section">
+            <a href="admin.html" class="btn btn-primary">数据更新</a>
+            <button id="exportDataBtn" class="btn btn-secondary">导出数据</button>
+            <button id="exportChartBtn" class="btn btn-secondary">导出图表</button>
+        </div>
+
+        <!-- 免责声明 -->
+        <div class="disclaimer-section">
+            <p>此网站信息由个人采集，仅供个人研究学习使用，不保证准确，不对用户访问后对数据的使用负责！禁止非法转载和使用！</p>
+        </div>
+    </div>
+</body>
+</html>
