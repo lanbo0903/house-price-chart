@@ -6,54 +6,6 @@
   },
   "transactionData": [
     {
-      "id": 1,
-      "community": "小区A",
-      "houseType": "2室1厅",
-      "date": "2023-01-15",
-      "price": 3.0,
-      "area": 80
-    },
-    {
-      "id": 2,
-      "community": "小区A",
-      "houseType": "2室1厅",
-      "date": "2023-02-20",
-      "price": 3.1,
-      "area": 85
-    },
-    {
-      "id": 3,
-      "community": "小区A",
-      "houseType": "3室2厅",
-      "date": "2023-01-10",
-      "price": 3.5,
-      "area": 120
-    },
-    {
-      "id": 4,
-      "community": "小区A",
-      "houseType": "3室2厅",
-      "date": "2023-02-18",
-      "price": 3.6,
-      "area": 115
-    },
-    {
-      "id": 5,
-      "community": "小区B",
-      "houseType": "2室1厅",
-      "date": "2023-01-25",
-      "price": 2.8,
-      "area": 75
-    },
-    {
-      "id": 6,
-      "community": "小区B",
-      "houseType": "2室1厅",
-      "date": "2023-02-05",
-      "price": 2.9,
-      "area": 78
-    },
-    {
       "id": 7,
       "community": "未来上层",
       "houseType": "2居",
