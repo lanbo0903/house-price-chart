@@ -28,6 +28,11 @@ function initMainPage() {
 
 // 管理员页面初始化
 function initAdminPage() {
+    // 先加载GitHub配置，再加载数据
+    if (window.location.pathname.includes('admin.html')) {
+        loadGithubConfig();
+    }
+    
     loadData(function() {
         initLogin();
         updateAdminFilterOptions();
@@ -754,7 +759,6 @@ function addRecord() {
         renderDataTable();
         updateAdminFilterOptions();
         clearForm();
-        alert('记录添加成功！请保存下载的data.json文件并替换原文件。');
     });
 }
 
@@ -813,7 +817,6 @@ function saveEdit() {
             renderDataTable();
             updateAdminFilterOptions();
             clearForm();
-            alert('记录修改成功！请保存下载的data.json文件并替换原文件。');
         });
     }
 }
@@ -828,7 +831,6 @@ function deleteRecord(id) {
             // 更新界面
             renderDataTable();
             updateAdminFilterOptions();
-            alert('记录删除成功！请保存下载的data.json文件并替换原文件。');
         });
     }
 }
